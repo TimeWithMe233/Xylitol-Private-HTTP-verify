@@ -1,0 +1,243 @@
+openapi: 3.0.1
+info:
+  title: 验证系统
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/register:
+    post:
+      deprecated: false
+      parameters:
+      - explode: true
+        in: query
+        name: username
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: password
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: hwid
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+                x-apifox-orders: []
+          x-apifox-name: 成功
+        "500":
+          content:
+            '*/*':
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+                x-apifox-orders: []
+          x-apifox-name: 服务器错误
+      security: []
+      summary: 注册
+      tags: []
+      x-apifox-folder: ""
+      x-apifox-status: developing
+      x-run-in-apifox: https://apifox.com/web/project/4859192/apis/api-220366330-run
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/cards:
+    post:
+      deprecated: false
+      parameters:
+      - example: 1D
+        explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: 2
+        explode: true
+        in: query
+        name: count
+        required: false
+        schema:
+          type: integer
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          x-apifox-name: 成功
+      security: []
+      summary: 获取卡密
+      tags: []
+      x-apifox-folder: ""
+      x-apifox-status: developing
+      x-run-in-apifox: https://apifox.com/web/project/4859192/apis/api-222415401-run
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/login:
+    post:
+      deprecated: false
+      parameters:
+      - example: A
+        explode: true
+        in: query
+        name: username
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: B
+        explode: true
+        in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: C
+        explode: true
+        in: query
+        name: hwid
+        required: false
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+          x-apifox-name: 成功
+      security: []
+      summary: 登录
+      tags: []
+      x-apifox-folder: ""
+      x-apifox-status: developing
+      x-run-in-apifox: https://apifox.com/web/project/4859192/apis/api-222420930-run
+      x-contentType: application/json
+      x-accepts: application/json
+  /api/use:
+    post:
+      deprecated: false
+      parameters:
+      - example: yh5e7X@I-8FW=aRMz-SlN7(BU--FCEX
+        explode: true
+        in: query
+        name: code
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: A
+        explode: true
+        in: query
+        name: userId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+                x-apifox-ignore-properties: []
+                x-apifox-orders: []
+          x-apifox-name: 成功
+      security: []
+      summary: 使用卡密
+      tags: []
+      x-apifox-folder: ""
+      x-apifox-status: developing
+      x-run-in-apifox: https://apifox.com/web/project/4859192/apis/api-222430541-run
+      x-accepts: application/json
+components:
+  schemas:
+    User:
+      properties:
+        time:
+          description: 激活时间
+          type: string
+        hwid:
+          description: 用户代码
+          type: string
+        id:
+          description: 用户名
+          type: string
+        state:
+          description: 激活状态
+          type: boolean
+      required:
+      - hwid
+      - id
+      - state
+      - time
+      type: object
+      x-apifox-orders:
+      - time
+      - hwid
+      - id
+      - state
+      x-apifox-ignore-properties: []
+      x-apifox-folder: ""
+    inline_response_200:
+      example:
+        card:
+        - card
+        - card
+      properties:
+        card:
+          items:
+            type: string
+          type: array
+      required:
+      - card
+    inline_response_200_1:
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+      required:
+      - message
+  securitySchemes: {}
+
