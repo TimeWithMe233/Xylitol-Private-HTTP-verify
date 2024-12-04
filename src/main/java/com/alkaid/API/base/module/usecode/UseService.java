@@ -57,7 +57,7 @@ public class UseService {
                 return currentExpiration.plusMonths(1);
             case "1Y","365d":
                 return currentExpiration.plusYears(1);
-            case "Forever","lifetime": // 修正拼写错误
+            case "forever","lifetime": // 修正拼写错误
                 return currentExpiration.plusYears(Math.multiplyExact(1, 1000)); // 千年
             default:
                 throw new IllegalArgumentException("Invalid duration type: " + durationType);
