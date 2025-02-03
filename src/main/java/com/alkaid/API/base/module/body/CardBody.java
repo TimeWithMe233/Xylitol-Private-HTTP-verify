@@ -9,4 +9,6 @@ public class CardBody {
     private String time;
     private int count;
     private String rank;
+    private String prefix;
+    private Boolean isbeta;
 }

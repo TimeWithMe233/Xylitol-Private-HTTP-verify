@@ -16,26 +16,27 @@ public class CardService {
     @Autowired
     private CardRepository cardRepository;
 
-    public List<String> createCard(String time, int count, String rank) {
+    public List<String> createCard(String time, int count, String rank, String prefix , Boolean isbeta) {
         List<String> cards = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             Card card = new Card();
-            String code = generateRandomCode();
+            String code = generateRandomCode(prefix);
             card.setCode(code);
             card.setDurationType(time);
             card.setRank(rank);
+            card.setBeta(isbeta);
             card.setUsed(false);
             cardRepository.save(card);
             cards.add(card.getCode());
         }
         return cards;
     }
-    private static String generateRandomCode() {
+    private static String generateRandomCode(String prefix) {
         // 定义字符集，包括大写字母、小写字母、数字和一些符号
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
-        sb.append("DreamDev-");
+        sb.append(prefix+"-");
 
         // 生成前三部分，每部分8个字符
         for (int i = 0; i < 3; i++) {

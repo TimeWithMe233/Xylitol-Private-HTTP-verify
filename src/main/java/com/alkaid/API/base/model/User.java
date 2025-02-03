@@ -24,6 +24,8 @@ public class User {
     private String lastName;
     @Column(name = "ranks")
     private String ranks;
+    @Column(name = "beta")
+    private Boolean isbeta;
     @Column(name = "expiration_date")
     private Date expiration_date;
 }

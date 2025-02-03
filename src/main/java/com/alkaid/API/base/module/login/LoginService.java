@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -22,19 +23,25 @@ public class LoginService {
     public int login(String username, String password, String token) {
         Optional<Ban> optionalBan = banRepository.findByUsernameAndToken(username, token);
         Optional<User> optionalUserAccount = loginRepository.findByUsernameAndPasswordAndToken(username, password, token);
+        Optional<User> optionalUser = loginRepository.findByUsernameAndPassword(username, password);
         if (optionalBan.isPresent()) {
             return 444;
         } else {
-        if (optionalUserAccount.isPresent()) {
+        if (optionalUserAccount.isPresent() && optionalUser.isPresent()) {
             User userAccount = optionalUserAccount.get();
+            User user = optionalUser.get();
             LocalDate expirationDate = userAccount.getExpiration_date().toLocalDate();
             LocalDate today = LocalDate.now();
-            if (today.isBefore(expirationDate)) {
-                return 1;
+            if (!Objects.equals(user.getToken(), token)) {
+                return 401;
             } else {
-                return 0;
+                if (today.isBefore(expirationDate)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
             }
-        } else {
+        }else {
             return 404;
         }
     }

@@ -22,6 +22,6 @@ public class CardController {
     public ResponseEntity<List<String>> createCard(@RequestBody CardBody card) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<>(cardService.createCard(card.getTime(), card.getCount(), card.getRank()), headers, HttpStatus.OK);
+        return new ResponseEntity<>(cardService.createCard(card.getTime(), card.getCount(), card.getRank(), card.getPrefix(), card.getIsbeta()), headers, HttpStatus.OK);
     }
 }

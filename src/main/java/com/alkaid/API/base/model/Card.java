@@ -25,4 +25,7 @@ public class Card {
 
     @Column(name = "is_used", nullable = true, length = 1)
     private boolean isUsed;
+
+    @Column(name = "is_beta", nullable = true, length = 1)
+    private boolean isBeta;
 }

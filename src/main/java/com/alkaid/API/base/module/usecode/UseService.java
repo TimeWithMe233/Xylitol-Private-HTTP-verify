@@ -19,7 +19,7 @@ public class UseService {
     @Autowired
     private CardRepository cardCodeRepository;
 
-    public boolean useCardCode(String code, String accountId) {
+    public boolean useCardCode(String code, String accountId, Boolean isBeta) {
         Optional<Card> optionalCardCode = cardCodeRepository.findByCode(code);
 
         if (optionalCardCode.isPresent()) {
@@ -27,12 +27,18 @@ public class UseService {
             if (cardCode.isUsed()) {
                 return false; // 卡密已经使用
             }
-
             // 获取用户账户信息
             Optional<User> optionalUserAccount = userAccountRepository.findByUsername(accountId);
             if (optionalUserAccount.isPresent()) {
                 User userAccount = optionalUserAccount.get();
                 userAccount.setRanks(cardCode.getRank());
+                // 检查 isBeta 是否为 null
+                if (isBeta != null) {
+                    userAccount.setIsbeta(isBeta);
+                } else {
+                    // 处理 isBeta 为 null 的情况，例如设置为默认值
+                    userAccount.setIsbeta(false); // 假设默认值为 false
+                }
                 LocalDate newExpiration = calculateNewExpiration(userAccount.getExpiration_date().toLocalDate(), cardCode.getDurationType());
                 userAccount.setExpiration_date(Date.valueOf(newExpiration));
                 userAccountRepository.save(userAccount); // 更新用户账户过期时间

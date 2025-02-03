@@ -13,6 +13,7 @@ public class UserInfoResponse {
     private String rank;
     private Boolean Banned;
     private Boolean IsRegistered;
+    private Boolean IsBeta;
     private String lastName;
     private Date expirationDate;
 }

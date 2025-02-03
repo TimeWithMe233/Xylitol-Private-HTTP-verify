@@ -32,6 +32,9 @@ public class LoginController {
             case 0:
                 response.put("message", "Insufficient use time");
                 return new ResponseEntity<>(response, headers, HttpStatus.NOT_EXTENDED);
+            case 401:
+                response.put("message", "Wrong HWID");
+                return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
             case 404:
                 response.put("message", "No Found Your Account");
                 return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
@@ -39,6 +42,7 @@ public class LoginController {
                 response.put("message", "Your Account is Banned");
                 return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
         }
-        return null;
+        response.put("message", "Unknown Error");
+        return new ResponseEntity<>(response, headers, HttpStatus.NOT_FOUND);
     }
 }

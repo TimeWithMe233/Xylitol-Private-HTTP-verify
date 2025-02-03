@@ -8,4 +8,5 @@ import lombok.Setter;
 public class UseBody {
     private String code;
     private String username;
+    private Boolean isbeta;
 }
