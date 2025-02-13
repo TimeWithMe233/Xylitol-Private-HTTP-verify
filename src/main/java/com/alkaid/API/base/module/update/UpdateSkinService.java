@@ -22,7 +22,7 @@ public class UpdateSkinService {
         Optional<User> optionalUser = userRepository.findByUsername(username);
         if (optionalUser.isPresent()){
             User update = optionalUser.get(); // 获取到现有用户对象
-            update.setCapeurl(skinurl); // 更新姓氏
+            update.setSkinurl(skinurl); // 更新姓氏
             updateRepository.save(update); // 保存更新后的用户对象
             return true;
         } else {
