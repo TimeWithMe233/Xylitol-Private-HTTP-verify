@@ -14,6 +14,7 @@ public class UserInfoResponse {
     private Boolean Banned;
     private Boolean IsRegistered;
     private Boolean IsBeta;
-    private String lastName;
+    private String capeurl;
+    private String skinurl;
     private Date expirationDate;
 }

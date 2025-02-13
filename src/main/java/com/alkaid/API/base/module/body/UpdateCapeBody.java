@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateBody {
+public class UpdateCapeBody {
     private String username;
-    private String lastName;
+    private String capeurl;
 }

@@ -20,12 +20,14 @@ public class User {
     private String password;
     @Column(name = "token")
     private String token;
-    @Column(name = "last_name")
-    private String lastName;
     @Column(name = "ranks")
     private String ranks;
     @Column(name = "beta")
     private Boolean isbeta;
     @Column(name = "expiration_date")
     private Date expiration_date;
+    @Column(name = "capeurl")
+    private String capeurl;
+    @Column(name = "skinurl")
+    private String skinurl;
 }

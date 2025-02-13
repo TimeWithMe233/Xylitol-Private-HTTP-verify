@@ -29,7 +29,8 @@ public class UserInfoService {
             userInfoResponse.setIsBeta(user.get().getIsbeta());
             userInfoResponse.setBanned(isTokenBanned(token));
             userInfoResponse.setIsRegistered(isRegistered(token));
-            userInfoResponse.setLastName(user.get().getLastName());
+            userInfoResponse.setCapeurl(user.get().getCapeurl());
+            userInfoResponse.setSkinurl(user.get().getSkinurl());
             userInfoResponse.setExpirationDate(user.get().getExpiration_date());
         } else {
             userInfoResponse.setIsRegistered(isRegistered(token));

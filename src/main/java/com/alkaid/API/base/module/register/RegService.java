@@ -30,6 +30,7 @@ public class RegService {
             reg.setPassword(password);
             reg.setToken(token);
             reg.setRanks("User");//String?是 沃日 你rank能不能和卡密绑定啥玩意
+            reg.setIsbeta(false);
             reg.setExpiration_date(Date.valueOf(LocalDate.now()));
             regRepository.save(reg);
             return true;

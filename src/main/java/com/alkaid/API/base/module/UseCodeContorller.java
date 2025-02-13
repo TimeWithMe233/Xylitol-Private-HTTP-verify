@@ -23,10 +23,10 @@ public class UseCodeContorller {
         Map<String, Object> response = new HashMap<>();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        if (useCodeService.useCardCode(useBody.getCode(), useBody.getUsername() , useBody.getIsbeta())) {
+        if (useCodeService.useCardCode(useBody.getCode(), useBody.getUsername())) {
             response.put("success", true);
             return new ResponseEntity<>(response, headers, HttpStatus.OK);
-        } else   {
+        } else {
             response.put("message", "Error");
             return new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
         }

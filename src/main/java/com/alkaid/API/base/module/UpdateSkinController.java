@@ -1,7 +1,8 @@
 package com.alkaid.API.base.module;
 
-import com.alkaid.API.base.module.body.UpdateBody;
-import com.alkaid.API.base.module.updateUsername.UpdateService;
+import com.alkaid.API.base.module.body.UpdateCapeBody;
+import com.alkaid.API.base.module.body.UpdateSkinBody;
+import com.alkaid.API.base.module.update.UpdateSkinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,14 +22,14 @@ import java.util.Map;
  * Time:20:20
  */
 @RestController
-@RequestMapping("api/update")
-public class UpdateController {
+@RequestMapping("api/updateskin")
+public class UpdateSkinController {
     @Autowired
-    private UpdateService updateService;
+    private UpdateSkinService updateSkinService;
 
     @PostMapping
-    public ResponseEntity<Map<String, String>> lastName(@RequestBody UpdateBody updateBody) {
-        boolean success = updateService.lastName(updateBody.getUsername(), updateBody.getLastName());
+    public ResponseEntity<Map<String, String>> skinurl(@RequestBody UpdateSkinBody updateBody) {
+        boolean success = updateSkinService.skinurl(updateBody.getUsername(), updateBody.getSkinurl());
         Map<String, String> response = new HashMap<>();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
