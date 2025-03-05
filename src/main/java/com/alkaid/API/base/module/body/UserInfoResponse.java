@@ -16,5 +16,6 @@ public class UserInfoResponse {
     private Boolean IsBeta;
     private String capeurl;
     private String skinurl;
+    private String qq;
     private Date expirationDate;
 }

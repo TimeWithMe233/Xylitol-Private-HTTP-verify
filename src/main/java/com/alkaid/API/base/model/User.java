@@ -30,4 +30,6 @@ public class User {
     private String capeurl;
     @Column(name = "skinurl")
     private String skinurl;
+    @Column(name = "qqnumber")
+    private String qq;
 }

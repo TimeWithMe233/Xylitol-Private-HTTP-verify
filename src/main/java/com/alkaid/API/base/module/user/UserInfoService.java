@@ -26,6 +26,7 @@ public class UserInfoService {
             userInfoResponse.setUsername(user.get().getUsername());
             userInfoResponse.setPassword(user.get().getPassword());
             userInfoResponse.setRank(user.get().getRanks());
+            userInfoResponse.setQq(user.get().getQq());
             userInfoResponse.setIsBeta(user.get().getIsbeta());
             userInfoResponse.setBanned(isTokenBanned(token));
             userInfoResponse.setIsRegistered(isRegistered(token));
